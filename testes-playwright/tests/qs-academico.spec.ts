@@ -632,11 +632,11 @@ test.describe('QS Acadêmico — Testes do Sistema de Notas', () => {
     });
 
     test('não deve exibir "Recuperação" para média abaixo de 5 (fronteira com Reprovado)', async ({ page }) => {
-      // Média: (4 + 4 + 4) / 3 = 4.00 — imediatamente abaixo do limite de Recuperação
+      // Média: (3 + 5 + 4) / 3 = 4.00 — imediatamente abaixo do limite de Recuperação
       await page.getByLabel('Nome do Aluno').fill('Aluno Abaixo da Recuperação');
-      await page.getByLabel('Nota 1').fill('2');
-      await page.getByLabel('Nota 2').fill('1');
-      await page.getByLabel('Nota 3').fill('3');
+      await page.getByLabel('Nota 1').fill('3');
+      await page.getByLabel('Nota 2').fill('5');
+      await page.getByLabel('Nota 3').fill('4');
       await page.getByRole('button', { name: 'Cadastrar' }).click();
 
       const linha = page.locator('#tabela-alunos tbody tr').first();
