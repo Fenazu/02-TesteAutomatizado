@@ -639,7 +639,7 @@ test.describe('QS Acadêmico — Testes do Sistema de Notas', () => {
       await page.getByLabel('Nome do Aluno').fill('Aluno Abaixo da Recuperação');
       await page.getByLabel('Nota 1').fill('3');
       await page.getByLabel('Nota 2').fill('5');
-      await page.getByLabel('Nota 3').fill('4 ');
+      await page.getByLabel('Nota 3').fill('4');
       await page.getByRole('button', { name: 'Cadastrar' }).click();
 
       // Aguarda a linha aparecer antes de verificar as células
