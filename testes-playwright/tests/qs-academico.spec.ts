@@ -143,7 +143,7 @@ test.describe('QS Acadêmico — Testes do Sistema de Notas', () => {
     });
 
     test('deve exibir apenas o aluno correspondente ao termo buscado', async ({ page }) => {
-      await page.getByPlaceholder('Buscar por nome').fill('Ana');
+      await page.getByPlaceholder('Filtrar alunos...').fill('Ana');
 
       // Apenas "Ana Souza" deve estar visível
       await expect(page.locator('#tabela-alunos').getByText('Ana Souza')).toBeVisible();
@@ -154,11 +154,11 @@ test.describe('QS Acadêmico — Testes do Sistema de Notas', () => {
     });
 
     test('deve restaurar todos os alunos ao limpar o filtro', async ({ page }) => {
-      await page.getByPlaceholder('Buscar por nome').fill('Ana');
+      await page.getByPlaceholder('Filtrar alunos...').fill('Ana');
       await expect(page.locator('#tabela-alunos tbody tr:visible')).toHaveCount(1);
 
       // Limpar o campo de busca
-      await page.getByPlaceholder('Buscar por nome').clear();
+      await page.getByPlaceholder('Filtrar alunos...').clear();
 
       // Ambos os alunos devem reaparecer
       await expect(page.locator('#tabela-alunos tbody tr')).toHaveCount(2);
@@ -167,14 +167,14 @@ test.describe('QS Acadêmico — Testes do Sistema de Notas', () => {
     });
 
     test('deve ser insensível a maiúsculas e minúsculas', async ({ page }) => {
-      await page.getByPlaceholder('Buscar por nome').fill('ana');
+      await page.getByPlaceholder('Filtrar alunos...').fill('ana');
 
       await expect(page.locator('#tabela-alunos').getByText('Ana Souza')).toBeVisible();
       await expect(page.locator('#tabela-alunos').getByText('Carlos Lima')).not.toBeVisible();
     });
 
     test('deve exibir mensagem de nenhum resultado para busca inexistente', async ({ page }) => {
-      await page.getByPlaceholder('Buscar por nome').fill('Zzzzzz');
+      await page.getByPlaceholder('Filtrar alunos...').fill('Zzzzzz');
 
       await expect(page.locator('#tabela-alunos').getByText('Nenhum aluno cadastrado.')).toBeVisible();
       await expect(page.locator('#tabela-alunos').getByText('Ana Souza')).not.toBeVisible();
