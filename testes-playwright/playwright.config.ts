@@ -46,7 +46,10 @@ export default defineConfig({
 
     {
       name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
+      use: { ...devices['Desktop Safari'] ,
+            actionTimeout: 15000,    // ← tempo para cada ação (fill, click)
+            navigationTimeout: 30000 // ← tempo para carregar a página
+           },
     },
 
     /* Test against mobile viewports. */
