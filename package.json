@@ -1,0 +1,26 @@
+{
+  "name": "02-testeautomatizado",
+  "version": "1.0.0",
+  "description": "**Pré-requisitos:** Noções básicas de teste de software, familiaridade com terminal/linha de comando",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fenazu/02-TesteAutomatizado.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Fenazu/02-TesteAutomatizado/issues"
+  },
+  "homepage": "https://github.com/Fenazu/02-TesteAutomatizado#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "@types/node": "^25.5.0"
+  }
+}
