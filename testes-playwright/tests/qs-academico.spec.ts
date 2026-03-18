@@ -333,6 +333,9 @@ test.describe('QS Acadêmico — Testes do Sistema de Notas', () => {
       // Excluir o aluno Aprovado (primeira linha)
       await page.locator('#tabela-alunos tbody tr').first().getByRole('button', { name: 'Excluir' }).click();
 
+       // Aguarda a tabela atualizar antes de verificar os cards
+      await expect(page.locator('#tabela-alunos tbody tr')).toHaveCount(2);
+
       await expect(page.locator('#stat-total')).toHaveText('2');
       await expect(page.locator('#stat-aprovados')).toHaveText('0');
       await expect(page.locator('#stat-recuperacao')).toHaveText('1');
@@ -638,6 +641,9 @@ test.describe('QS Acadêmico — Testes do Sistema de Notas', () => {
       await page.getByLabel('Nota 2').fill('5');
       await page.getByLabel('Nota 3').fill('4 ');
       await page.getByRole('button', { name: 'Cadastrar' }).click();
+
+      // Aguarda a linha aparecer antes de verificar as células
+      await expect(page.locator('#tabela-alunos tbody tr')).toHaveCount(1);
 
       const linha = page.locator('#tabela-alunos tbody tr').first();
       await expect(linha.locator('td').nth(4)).toHaveText('4.00');
