@@ -62,7 +62,7 @@ test.describe('QS Acadêmico — Testes do Sistema de Notas', () => {
       await page.getByRole('button', { name: 'Cadastrar' }).click();
 
       // Média esperada: (8 + 6 + 10) / 3 = 8.00
-      const celulaMedia = page.locator('#tabela-alunos tbody tr').first().locator('td').nth(4);
+      const celulaMedia = page.locator('#tabela-alunos tbody tr').first().getByRole('cell').nth(4);
       await expect(celulaMedia).toHaveText('8.00');
     });
 
@@ -366,7 +366,7 @@ test.describe('QS Acadêmico — Testes do Sistema de Notas', () => {
       await page.getByRole('button', { name: 'Cadastrar' }).click();
 
       const linha = page.locator('#tabela-alunos tbody tr').first();
-      await expect(linha.locator('td').nth(4)).toHaveText('7.00');
+      await expect(linha.getByRole('cell').nth(4)).toHaveText('7.00');
       await expect(linha.getByText('Aprovado', { exact: true })).toBeVisible();
     });
 
@@ -379,7 +379,7 @@ test.describe('QS Acadêmico — Testes do Sistema de Notas', () => {
       await page.getByRole('button', { name: 'Cadastrar' }).click();
 
       const linha = page.locator('#tabela-alunos tbody tr').first();
-      await expect(linha.locator('td').nth(4)).toHaveText('8.00');
+      await expect(linha.getByRole('cell').nth(4)).toHaveText('8.00');
       await expect(linha.getByText('Aprovado', { exact: true })).toBeVisible();
     });
 
@@ -392,7 +392,7 @@ test.describe('QS Acadêmico — Testes do Sistema de Notas', () => {
       await page.getByRole('button', { name: 'Cadastrar' }).click();
 
       const linha = page.locator('#tabela-alunos tbody tr').first();
-      await expect(linha.locator('td').nth(4)).toHaveText('10.00');
+      await expect(linha.getByRole('cell').nth(4)).toHaveText('10.00');
       await expect(linha.getByText('Aprovado', { exact: true })).toBeVisible();
     });
 
@@ -423,7 +423,7 @@ test.describe('QS Acadêmico — Testes do Sistema de Notas', () => {
       await page.getByRole('button', { name: 'Cadastrar' }).click();
 
       const linha = page.locator('#tabela-alunos tbody tr').first();
-      await expect(linha.locator('td').nth(4)).toHaveText('4.67');
+      await expect(linha.getByRole('cell').nth(4)).toHaveText('4.67');
       await expect(linha.getByText('Reprovado', { exact: true })).toBeVisible();
     });
 
@@ -436,7 +436,7 @@ test.describe('QS Acadêmico — Testes do Sistema de Notas', () => {
       await page.getByRole('button', { name: 'Cadastrar' }).click();
 
       const linha = page.locator('#tabela-alunos tbody tr').first();
-      await expect(linha.locator('td').nth(4)).toHaveText('2.00');
+      await expect(linha.getByRole('cell').nth(4)).toHaveText('2.00');
       await expect(linha.getByText('Reprovado', { exact: true })).toBeVisible();
     });
 
@@ -449,7 +449,7 @@ test.describe('QS Acadêmico — Testes do Sistema de Notas', () => {
       await page.getByRole('button', { name: 'Cadastrar' }).click();
 
       const linha = page.locator('#tabela-alunos tbody tr').first();
-      await expect(linha.locator('td').nth(4)).toHaveText('0.00');
+      await expect(linha.getByRole('cell').nth(4)).toHaveText('0.00');
       await expect(linha.getByText('Reprovado', { exact: true })).toBeVisible();
     });
 
@@ -462,7 +462,7 @@ test.describe('QS Acadêmico — Testes do Sistema de Notas', () => {
       await page.getByRole('button', { name: 'Cadastrar' }).click();
 
       const linha = page.locator('#tabela-alunos tbody tr').first();
-      await expect(linha.locator('td').nth(4)).toHaveText('5.00');
+      await expect(linha.getByRole('cell').nth(4)).toHaveText('5.00');
       await expect(linha.getByText('Reprovado', { exact: true })).not.toBeVisible();
     });
 
@@ -529,13 +529,13 @@ test.describe('QS Acadêmico — Testes do Sistema de Notas', () => {
       const linhas = page.locator('#tabela-alunos tbody tr');
 
       // Beatriz — média: (9 + 8 + 10) / 3 = 9.00
-      await expect(linhas.nth(0).locator('td').nth(4)).toHaveText('9.00');
+      await expect(linhas.nth(0).getByRole('cell').nth(4)).toHaveText('9.00');
 
       // Eduardo — média: (5 + 4 + 6) / 3 = 5.00
-      await expect(linhas.nth(1).locator('td').nth(4)).toHaveText('5.00');
+      await expect(linhas.nth(1).getByRole('cell').nth(4)).toHaveText('5.00');
 
       // Gabriela — média: (2 + 1 + 3) / 3 = 2.00
-      await expect(linhas.nth(2).locator('td').nth(4)).toHaveText('2.00');
+      await expect(linhas.nth(2).getByRole('cell').nth(4)).toHaveText('2.00');
     });
 
     test('deve limpar o formulário após cada cadastro', async ({ page }) => {
@@ -588,7 +588,7 @@ test.describe('QS Acadêmico — Testes do Sistema de Notas', () => {
       await page.getByRole('button', { name: 'Cadastrar' }).click();
 
       const linha = page.locator('#tabela-alunos tbody tr').first();
-      await expect(linha.locator('td').nth(4)).toHaveText('5.00');
+      await expect(linha.getByRole('cell').nth(4)).toHaveText('5.00');
       await expect(linha.getByText('Recuperação', { exact: true })).toBeVisible();
     });
 
@@ -601,7 +601,7 @@ test.describe('QS Acadêmico — Testes do Sistema de Notas', () => {
       await page.getByRole('button', { name: 'Cadastrar' }).click();
 
       const linha = page.locator('#tabela-alunos tbody tr').first();
-      await expect(linha.locator('td').nth(4)).toHaveText('6.00');
+      await expect(linha.getByRole('cell').nth(4)).toHaveText('6.00');
       await expect(linha.getByText('Recuperação', { exact: true })).toBeVisible();
     });
 
@@ -614,7 +614,7 @@ test.describe('QS Acadêmico — Testes do Sistema de Notas', () => {
       await page.getByRole('button', { name: 'Cadastrar' }).click();
 
       const linha = page.locator('#tabela-alunos tbody tr').first();
-      await expect(linha.locator('td').nth(4)).toHaveText('6.33');
+      await expect(linha.getByRole('cell').nth(4)).toHaveText('6.33');
       await expect(linha.getByText('Recuperação', { exact: true })).toBeVisible();
     });
 
@@ -627,7 +627,7 @@ test.describe('QS Acadêmico — Testes do Sistema de Notas', () => {
       await page.getByRole('button', { name: 'Cadastrar' }).click();
 
       const linha = page.locator('#tabela-alunos tbody tr').first();
-      await expect(linha.locator('td').nth(4)).toHaveText('7.00');
+      await expect(linha.getByRole('cell').nth(4)).toHaveText('7.00');
       await expect(linha.getByText('Recuperação', { exact: true })).not.toBeVisible();
     });
 
@@ -640,7 +640,7 @@ test.describe('QS Acadêmico — Testes do Sistema de Notas', () => {
       await page.getByRole('button', { name: 'Cadastrar' }).click();
 
       const linha = page.locator('#tabela-alunos tbody tr').first();
-      await expect(linha.locator('td').nth(4)).toHaveText('4.00');
+      await expect(linha.getByRole('cell').nth(4)).toHaveText('4.00');
       await expect(linha.getByText('Recuperação', { exact: true })).not.toBeVisible();
     });
 
