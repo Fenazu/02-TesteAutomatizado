@@ -41,18 +41,12 @@ export default defineConfig({
 
     {
       name: 'firefox',
-      use: { ...devices['Desktop Firefox'] ,
-              actionTimeout: 15000,  
-              navigationTimeout: 30000
-      },
+      use: { ...devices['Desktop Firefox']},
     },
 
     {
       name: 'webkit',
-      use: { ...devices['Desktop Safari'] ,
-            actionTimeout: 15000,    // ← tempo para cada ação (fill, click)
-            navigationTimeout: 30000 // ← tempo para carregar a página
-           },
+      use: { ...devices['Desktop Safari'] },
     },
 
     /* Test against mobile viewports. */
